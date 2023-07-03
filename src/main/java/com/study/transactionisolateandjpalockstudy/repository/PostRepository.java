@@ -2,6 +2,7 @@ package com.study.transactionisolateandjpalockstudy.repository;
 
 import com.study.transactionisolateandjpalockstudy.domain.Post;
 import jakarta.persistence.LockModeType;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Modifying;
