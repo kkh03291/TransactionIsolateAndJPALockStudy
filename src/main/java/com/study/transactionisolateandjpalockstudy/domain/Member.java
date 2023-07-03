@@ -18,6 +18,9 @@ public class Member {
 
     private String name;
 
+    @Version
+    private Long version;
+
     @Enumerated(EnumType.STRING)
     private MemberLevel level;
 

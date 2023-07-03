@@ -45,4 +45,12 @@ public class PostService {
     public Post findWithOptimisticLock(Long id) {
         return repository.findByIdWithOptimisticLock(id).orElseThrow();
     }
+    @Transactional
+    public Post findWithOptimisticForceIncrementLock(Long id) {
+        return repository.findByIdWithOptimisticForceIncrementLock(id).orElseThrow();
+    }
+
+    public Post findOnlyPost(Long id) {
+        return repository.findOnlyPostById(id).orElseThrow();
+    }
 }
