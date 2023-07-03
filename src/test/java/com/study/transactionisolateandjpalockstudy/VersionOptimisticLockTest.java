@@ -58,19 +58,15 @@ public class VersionOptimisticLockTest {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         //expect
         assertThatThrownBy(() -> {
-                    try {
-                        Future<?> submit = executorService.submit(() -> postService.edit(post.getId(),
-                                new PostEdit("test1", "test1"))
-                        );
-                        Future<?> submit1 = executorService.submit(() -> postService.edit(post.getId(),
-                                new PostEdit("test2", "test2"))
-                        );
-                        submit.get();
-                        submit1.get();
-                    } catch (ExecutionException e) {
-                        throw e.getCause();
-                    }
-        }).isInstanceOf(ObjectOptimisticLockingFailureException.class);
+            Future<?> submit = executorService.submit(() -> postService.edit(post.getId(),
+                    new PostEdit("test1", "test1"))
+            );
+            Future<?> submit1 = executorService.submit(() -> postService.edit(post.getId(),
+                    new PostEdit("test2", "test2"))
+            );
+            submit.get();
+            submit1.get();
+        }).isInstanceOf(ExecutionException.class).hasCauseInstanceOf(ObjectOptimisticLockingFailureException.class);
     }
 
     @Test
