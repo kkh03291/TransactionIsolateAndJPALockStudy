@@ -24,60 +24,10 @@ public class TransactionIsolationTest {
     @Autowired
     MemberService service;
 
-
     @AfterEach
     void tearDown() {
-//        postService.removeAll();
         service.removeAll();
     }
-
-//    @Autowired
-//    MemberServiceWithJdbcTemplate service;
-//
-//    @AfterEach
-//    void tearDown() {
-//        service.removeAll();
-//    }
-//
-//    @Test
-//    @DisplayName("Isolation=Read_Commit이면, Dirty Read가 발생하지 않는다.")
-//    public void test() throws ExecutionException, InterruptedException {
-//
-//        //given
-//        Member user = Member.builder()
-//                .name("user")
-//                .level(MemberLevel.USER)
-//                .build();
-//        ExecutorService executorService = Executors.newFixedThreadPool(2);
-//        CountDownLatch latch = new CountDownLatch(1);
-//        //when
-//        Future<?> submit = executorService.submit(() -> service.save(user, latch));
-//        Future<List<Member>> find = executorService.submit(() -> service.findAllWithReadCommit(latch));
-//        List<Member> members = find.get();
-//        submit.get();
-//
-//        //then
-//        assertThat(members).hasSize(0);
-//    }
-//
-//    @Test
-//    @DisplayName("Isolation=Read_UnCommit이면, Dirty Read가 발생한다.")
-//    public void test2() throws ExecutionException, InterruptedException {
-//        //given
-//        Member user = Member.builder()
-//                .name("user")
-//                .level(MemberLevel.USER)
-//                .build();
-//        ExecutorService executorService = Executors.newFixedThreadPool(2);
-//        CountDownLatch latch = new CountDownLatch(1);
-//        //when
-//        Future<?> submit = executorService.submit(() -> service.save(user, latch));
-//        Future<List<Member>> submit1 = executorService.submit(() -> service.findAllWithReadUnCommit(latch));
-//        List<Member> members = submit1.get();
-//        submit.get();
-//
-//        assertThat(members).hasSize(1);
-//    }
 
     @Test
     @DisplayName("Isolation=Read_UnCommit이면, Dirty Read가 발생한다.")
