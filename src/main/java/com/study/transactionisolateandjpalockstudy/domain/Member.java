@@ -24,6 +24,10 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private MemberLevel level;
 
+    public void changeName(String name) {
+        this.name = name;
+    }
+
     @Builder
     private Member(String name, MemberLevel level) {
         this.name = name;
