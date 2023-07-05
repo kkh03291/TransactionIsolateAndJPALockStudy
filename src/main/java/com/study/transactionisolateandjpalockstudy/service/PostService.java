@@ -25,11 +25,6 @@ public class PostService {
     @Transactional
     public void edit(Long id, PostEdit edit) {
         find(id).edit(edit);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Transactional
